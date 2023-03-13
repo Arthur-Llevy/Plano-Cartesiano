@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+		#canvas {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+
+	<input id="x" type="number">
+	<input id="y" type="number">
+	<button onclick='marcar()' id="send">Enviar</button>
+
+	<canvas width="500" height="500" id="canvas"></canvas>
+
+	<script>
+		
+		let canvas = document.getElementById('canvas');
+		let x = document.getElementById('x').value;
+		let y = document.getElementById('y').value;
+		let ctx = canvas.getContext('2d');
+
+		ctx.strokeStyle = 'red';
+		ctx.moveTo(250, 0);
+		ctx.lineTo(250, 500);
+		ctx.moveTo(0, 250);
+		ctx.lineTo(500, 250)
+		ctx.stroke();
+
+		function marcar(){
+			
+			let x = document.getElementById('x').value;
+			let y = document.getElementById('y').value;
+
+			ctx.beginPath();
+			ctx.arc(x, y, 2, 0, 2 * Math.PI);
+			ctx.fillStyle = 'black';
+			ctx.fill(); 
+
+		};
+
+	</script>
+
+</body>
+</html>
