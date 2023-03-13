@@ -12,8 +12,8 @@
 </head>
 <body>
 
-	<input id="x" type="number">
-	<input id="y" type="number">
+	<input max="5" min='-5' id="x" placeholder='x' type="number">
+	<input max="5" min='-5' id="y" placeholder='y' type="number">
 	<button onclick='marcar()' id="send">Enviar</button>
 
 	<canvas width="500" height="500" id="canvas"></canvas>
@@ -37,10 +37,35 @@
 			let x = document.getElementById('x').value;
 			let y = document.getElementById('y').value;
 
-			ctx.beginPath();
-			ctx.arc(x, y, 2, 0, 2 * Math.PI);
-			ctx.fillStyle = 'black';
-			ctx.fill(); 
+			if(x < 0 && y >= 0){
+
+				ctx.beginPath();
+				ctx.arc((x * 50) + 250, -(y * 50) + 250, 2, 0, 2 * Math.PI);
+				ctx.fillStyle = 'black';
+				ctx.fill(); 
+
+			}else if(x >= 0 && y >= 0){
+
+				ctx.beginPath();
+				ctx.arc((x * 50) + 250, -(y * 50) + 250, 2, 0, 2 * Math.PI);
+				ctx.fillStyle = 'black';
+				ctx.fill(); 
+
+			}else if (x >= 0 && y <= 0){
+
+				ctx.beginPath();
+				ctx.arc((x * 50) + 250, -(y * 50) + 250, 2, 0, 2 * Math.PI);
+				ctx.fillStyle = 'black';
+				ctx.fill(); 
+
+			}else if (x <= 0 && y <= 0){
+
+				ctx.beginPath();
+				ctx.arc((x * 50) + 250, -(y * 50) + 250, 2, 0, 2 * Math.PI);
+				ctx.fillStyle = 'black';
+				ctx.fill(); 
+
+			};
 
 		};
 
