@@ -1,6 +1,4 @@
 let canvas = document.getElementById('canvas');
-let x = document.getElementById('x').value;
-let y = document.getElementById('y').value;
 let ctx = canvas.getContext('2d');
 
 ctx.strokeStyle = 'red';
@@ -18,8 +16,9 @@ ctx.fillText(`-5`, 250,  500);
 
 function marcar(){
 	
-	let x = document.getElementById('x').value;
-	let y = document.getElementById('y').value;	
+	let xy = document.getElementById('xy').value;
+	let x = xy.split(',')[0];
+	let y = xy.split(',')[1];
 
 	if(x < 0 && y >= 0){
 
