@@ -1,0 +1,19 @@
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+}
+
+#canvas {
+	border: 1px solid black;
+	display: block;
+}
+
+@media screen and (max-width: 512px) {
+
+	#canvas {
+		width: 90%;
+	}
+}

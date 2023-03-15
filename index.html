@@ -4,30 +4,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
-	<style>
+	<link rel="stylesheet" href="style.css">
 
-		body {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			gap: 30px;
-		}
-
-		#canvas {
-			border: 1px solid black;
-			display: block;
-		}
-
-		@media screen and (max-width: 512px) {
-		
-			#canvas {
-				width: 90%;
-			}
-		}
-
-
-	</style>
 </head>
 <body>
 
@@ -37,73 +15,11 @@
 
 	<canvas width="500" height="500" id="canvas"></canvas>
 
-	<script>
-		
-		let canvas = document.getElementById('canvas');
-		let x = document.getElementById('x').value;
-		let y = document.getElementById('y').value;
-		let ctx = canvas.getContext('2d');
+	<footer>
+		<p>Version - 1.0.2</p>
+	</footer>
 
-		ctx.strokeStyle = 'red';
-		ctx.moveTo(250, 0);
-		ctx.lineTo(250, 500);
-		ctx.moveTo(0, 250);
-		ctx.lineTo(500, 250)
-		ctx.stroke();
-		ctx.font = "10px Arial";
-		ctx.fillText(`-5`, 0,  250);
-		ctx.fillText(`5`, 490,  250);
-		ctx.fillText(`5`, 250,  10);
-		ctx.fillText(`-5`, 250,  500);
-
-		function marcar(){
-			
-			let x = document.getElementById('x').value;
-			let y = document.getElementById('y').value;
-
-			
-
-			if(x < 0 && y >= 0){
-
-				ctx.beginPath();
-				ctx.arc((x * 50) + 250, -(y * 50) + 250, 2, 0, 2 * Math.PI);
-				ctx.fillStyle = 'black';
-				ctx.fill(); 
-				ctx.font = "12px Arial";
-				ctx.fillText(`${x}, ${y}`, (x * 50) + 230, -(y * 50) + 230);
-
-			}else if(x >= 0 && y >= 0){
-
-				ctx.beginPath();
-				ctx.arc((x * 50) + 250, -(y * 50) + 250, 2, 0, 2 * Math.PI);
-				ctx.fillStyle = 'black';
-				ctx.fill(); 
-				ctx.font = "12px Arial";
-				ctx.fillText(`${x}, ${y}`, (x * 50) + 230, -(y * 50) + 230);
-
-			}else if (x >= 0 && y <= 0){
-
-				ctx.beginPath();
-				ctx.arc((x * 50) + 250, -(y * 50) + 250, 2, 0, 2 * Math.PI);
-				ctx.fillStyle = 'black';
-				ctx.fill(); 
-				ctx.font = "12px Arial";
-				ctx.fillText(`${x}, ${y}`, (x * 50) + 230, -(y * 50) + 230);
-
-			}else if (x <= 0 && y <= 0){
-
-				ctx.beginPath();
-				ctx.arc((x * 50) + 250, -(y * 50) + 250, 2, 0, 2 * Math.PI);
-				ctx.fillStyle = 'black';
-				ctx.fill(); 
-				ctx.font = "12px Arial";
-				ctx.fillText(`${x}, ${y}`, (x * 50) + 230, -(y * 50) + 230);
-
-			};
-
-		};
-
-	</script>
+	<script src="main.js"></script>
 
 </body>
 </html>
