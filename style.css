@@ -25,6 +25,7 @@ html {
   gap: 30px;
   width: 90%;
   margin: 5% auto;
+  flex-wrap: wrap;
 }
 
 #xy, #send, #xyLabel {

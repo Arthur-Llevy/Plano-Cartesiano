@@ -37,6 +37,7 @@ function create(){
 	//Canvas
 	let c = document.getElementById('canvas');
 	let ctx = c.getContext('2d');
+	ctx.beginPath();
 
 	ctx.fillStyle = '#eee'
 	ctx.strokeStyle = 'lime';
@@ -51,6 +52,8 @@ function create(){
 	ctx.fillText(width, width * 100 + 10,  height * 100 / 2 + 10);
 	ctx.fillText(height, width * 100 / 2 + 5,  10);
 	ctx.fillText(-height, width * 100 / 2 + 5,  height * 100 + 20);
+
+	xy.innerHTML = '';
 
 };
 
@@ -71,6 +74,9 @@ function marcar(){
 	let x = xy.split(',')[0];
 	let y = xy.split(',')[1];
 
+	ctx.fillStyle = '#eee'
+	ctx.strokeStyle = 'lime';
+
 	if (x <= 0 && y <= 0){
 
 		//Cartesian's circles	
@@ -83,11 +89,13 @@ function marcar(){
 		ctx.fill(); 
 
 		//Cartesian's points text
+		ctx.beginPath();
 		ctx.font = "12px Arial";
 		ctx.fillStyle = '#eee';
 		ctx.fillText(`${alphabet[counter]}`, arcMarginLeft + 10, arcMarginTop - 10);
 
 		//Cartesian's dashed lines	
+		ctx.beginPath();
 		ctx.setLineDash([5, 5]);
 		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
 		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
@@ -144,6 +152,7 @@ function marcar(){
 		};		
 
 		//Cartesian's dashed lines	
+		ctx.beginPath();
 		ctx.setLineDash([5, 5]);
 		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
 		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
@@ -186,9 +195,13 @@ function marcar(){
 		let resultadoDistancia = document.getElementById('resultadoDistancia');
 		resultadoDistancia.innerHTML = `A distância entre os pontos ${ponto1} e ${ponto2} é: ${resultado.toFixed(2)}`;
 
+		ctx.beginPath();
+		ctx.moveTo(pontos[ponto1].split(',')[0] * 50 + width /2 + 10, -(pontos[ponto1].split(',')[1] * 50) + height / 2 + 10);
+		ctx.lineTo(pontos[ponto2].split(',')[0] * 50 + width /2 + 10, -(pontos[ponto2].split(',')[1] * 50) + height / 2 + 10);
+		ctx.strokeStyle = 'red';
+		ctx.fillStyle = 'red';
+		ctx.stroke();
+
 	});
 
 };
-
-
-
