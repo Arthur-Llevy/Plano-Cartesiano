@@ -62,62 +62,7 @@ function marcar(){
 	let x = xy.split(',')[0];
 	let y = xy.split(',')[1];
 
-	if(x < 0 && y >= 0){
-
-		//Cartesian's circles
-		ctx.beginPath();
-		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
-		ctx.fillStyle = '#eee';
-		ctx.fill(); 
-		ctx.font = "12px Arial";
-		ctx.fillStyle = '#eee'
-		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 20, -(y * 50) + height / 2 + 30);
-		//Cartesian's dashed lines	
-		ctx.setLineDash([5, 5]);
-		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
-		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
-		ctx.moveTo(width / 2 + 10, -(y * 50) + height / 2 + 10);
-		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
-		ctx.stroke();		
-
-	}else if(x >= 0 && y >= 0){
-
-		//Cartesian's circles
-		ctx.beginPath();
-		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
-		ctx.fillStyle = '#eee';
-		ctx.fill(); 
-		ctx.font = "12px Arial";
-		ctx.fillStyle = '#eee'
-		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 20, -(y * 50) + height / 2 + 30);
-		//Cartesian's dashed lines	
-		ctx.setLineDash([5, 5]);
-		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
-		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
-		ctx.moveTo(width / 2 + 10, -(y * 50) + height / 2 + 10);
-		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
-		ctx.stroke();
-
-	}else if (x >= 0 && y <= 0){
-
-		//Cartesian's circles
-		ctx.beginPath();
-		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
-		ctx.fillStyle = '#eee';
-		ctx.fill(); 
-		ctx.font = "12px Arial";
-		ctx.fillStyle = '#eee'
-		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 20, -(y * 50) + height / 2 + 30);
-		//Cartesian's dashed lines	
-		ctx.setLineDash([5, 5]);
-		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
-		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
-		ctx.moveTo(width / 2 + 10, -(y * 50) + height / 2 + 10);
-		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
-		ctx.stroke();		
-
-
-	}else if (x <= 0 && y <= 0){
+	if (x <= 0 && y <= 0){
 
 		//Cartesian's circles		
 		ctx.beginPath();
@@ -134,6 +79,24 @@ function marcar(){
 		ctx.moveTo(width / 2 + 10, -(y * 50) + height / 2 + 10);
 		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
 		ctx.stroke();	
+
+	}else{
+
+		//Cartesian's circles
+		ctx.beginPath();
+		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
+		ctx.fillStyle = '#eee';
+		ctx.fill(); 
+		ctx.font = "12px Arial";
+		ctx.fillStyle = '#eee'
+		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 20, -(y * 50) + height / 2 + 30);
+		//Cartesian's dashed lines	
+		ctx.setLineDash([5, 5]);
+		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
+		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.moveTo(width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.stroke();		
 
 	};
 
