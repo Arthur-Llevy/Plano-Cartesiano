@@ -1,3 +1,5 @@
+let pontos = {};
+
 function create(){
 
 	let xy = document.getElementById('xy');
@@ -57,7 +59,7 @@ let counter = -1;
 
 function marcar(){
 
-	let alphabet = "abcdefghijklmnopqrstuvwxyz".split('');	
+	let alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase().split('') 
 	counter >= 26 ? counter = -1 : counter += 1;	
 
 	//C = canvas variable
@@ -98,14 +100,19 @@ function marcar(){
 		let tr = document.createElement('tr');
 		let td1 = document.createElement('td');
 		let td2 = document.createElement('td');
+		let distanciaPonto = document.getElementById('distanciaPonto');
 
 		pointsTable.style.visibility = 'initial';
+		distanciaPonto.style.visibility = 'initial';
 		td1.innerHTML = alphabet[counter];
+		td1.setAttribute('id', `${x}, ${y}`);
 		td2.innerHTML = `(${x},${y})`;
 		tr.appendChild(td1);
 		tr.appendChild(td2);
 
 		pointsTable.appendChild(tr);
+
+		pontos[alphabet[counter]] = `${x}, ${y}`;
 
 	}else{
 
@@ -120,14 +127,21 @@ function marcar(){
 
 		//Cartesian's points text
 		ctx.font = "12px Arial";
-		ctx.fillStyle = '#eee';
+		ctx.fillStyle = '#eee';	
 
-		y > 0 ? ctx.fillText(`${alphabet[counter]}`, arcMarginLeft - 20, arcMarginTop + 20) :
-			ctx.fillText(`${alphabet[counter]}`, arcMarginLeft - 20, arcMarginTop - 20);
+ 		if(x < 0 && y > 0){
 
+			ctx.fillText(`${alphabet[counter]}`, arcMarginLeft + 20, arcMarginTop + 20);
 
-		x < 0 ? ctx.fillText(`${alphabet[counter]}`, arcMarginLeft + 20, arcMarginTop + 20) :
-			ctx.fillText(`${alphabet[counter]}`, arcMarginLeft - 20, arcMarginTop + 20)
+		}else if(y > 0){
+
+			ctx.fillText(`${alphabet[counter]}`, arcMarginLeft - 20, arcMarginTop + 20); 
+
+		}else {
+
+			ctx.fillText(`${alphabet[counter]}`, arcMarginLeft - 20, arcMarginTop - 20)
+
+		};		
 
 		//Cartesian's dashed lines	
 		ctx.setLineDash([5, 5]);
@@ -139,18 +153,42 @@ function marcar(){
 
 		//Insert points to table
 		let pointsTable = document.getElementById('points');
+		let distanciaPonto = document.getElementById('distanciaPonto');
 		let tr = document.createElement('tr');
 		let td1 = document.createElement('td');
 		let td2 = document.createElement('td');
 
+		distanciaPonto.style.visibility = 'initial';
 		pointsTable.style.visibility = 'initial';
 		td1.innerHTML = alphabet[counter];
+		td1.setAttribute('id', `${x}, ${y}`);
+		td1.setAttribute('name', `${x}, ${y}`);
 		td2.innerHTML = `(${x},${y})`;
 		tr.appendChild(td1);
 		tr.appendChild(td2);
 
 		pointsTable.appendChild(tr);	
 
+		pontos[alphabet[counter]] = `${x}, ${y}`;
+
 	};	
 
+
+	let calcularDistancia = document.getElementById('calcularButton');
+
+	calcularDistancia.addEventListener('click', () => {
+
+		let ponto1 = document.getElementById('dxyA').value.toUpperCase();
+		let ponto2 = document.getElementById('dxyB').value.toUpperCase();
+
+		let resultado = Math.sqrt((pontos[ponto1].split(',')[0] - pontos[ponto2].split(',')[0]) ** 2 + (pontos[ponto1].split(',')[1] - pontos[ponto2].split(',')[1]) ** 2);
+
+		let resultadoDistancia = document.getElementById('resultadoDistancia');
+		resultadoDistancia.innerHTML = `A distância entre os pontos ${ponto1} e ${ponto2} é: ${resultado.toFixed(2)}`;
+
+	});
+
 };
+
+
+
