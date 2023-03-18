@@ -1,21 +1,59 @@
-let canvas = document.getElementById('canvas');
-let ctx = canvas.getContext('2d');
+function create(){
 
-ctx.strokeStyle = 'red';
-//Cartesian's lines
-ctx.moveTo(250, 0);
-ctx.lineTo(250, 500);
-ctx.moveTo(0, 250);
-ctx.lineTo(500, 250)
-ctx.stroke();
-ctx.font = "10px Arial";
-ctx.fillText(`-5`, 0,  250);
-ctx.fillText(`5`, 490,  250);
-ctx.fillText(`5`, 250,  10);
-ctx.fillText(`-5`, 250,  500);
+	let xy = document.getElementById('xy');
+	let markButton = document.getElementById('send');
+	let sizeLabel = document.getElementById('sizeLabel');
+	let size = document.getElementById('size');
+	let createCPButton = document.getElementById('createCP');
+
+	sizeLabel.style.position = 'absolute';
+	sizeLabel.style.visibility = 'hidden';
+	size.style.position = 'absolute';
+	size.style.visibility = 'hidden';
+	createCPButton.style.position = 'absolute';
+	createCPButton.style.visibility = 'hidden';
+
+	xy.style.position = 'relative';
+	xy.style.visibility = 'initial';
+	markButton.style.position = 'relative';
+	markButton.style.visibility = 'initial';
+
+	let width = document.getElementById('size').value.split(',')[0];
+	let height = document.getElementById('size').value.split(',')[1];
+	let canvas = document.createElement('canvas');
+	let container = document.getElementById('container');
+
+	canvas.setAttribute('width', width * 100 + 20);
+	canvas.setAttribute('height', height * 100 + 20);
+	canvas.setAttribute('id', 'canvas');
+
+	container.appendChild(canvas);
+
+	//Canvas
+	let c = document.getElementById('canvas');
+	let ctx = c.getContext('2d');
+
+	ctx.strokeStyle = 'red';
+	//Cartesian's lines
+	ctx.moveTo((width * 100) / 2 + 10, 0 + 10);
+	ctx.lineTo((width * 100) / 2 + 10, height * 100 + 10);
+	ctx.moveTo(0 + 10, (height * 100) / 2 + 10);
+	ctx.lineTo((width * 100) + 10, (height * 100) / 2 + 10);
+	ctx.stroke();
+	ctx.font = "10px Arial";
+	ctx.fillText(-width, 0,  (height * 100) / 2 + 10);
+	ctx.fillText(width, width * 100 + 10,  height * 100 / 2 + 10);
+	ctx.fillText(height, width * 100 / 2,  10);
+	ctx.fillText(height, width * 100 / 2 + 5,  height * 100 + 20);
+
+};
 
 function marcar(){
-	
+
+	let c = document.getElementById('canvas');
+	let ctx = c.getContext('2d');
+	let width = canvas.getAttribute('width') - 20;
+	let height = canvas.getAttribute('height') - 20;
 	let xy = document.getElementById('xy').value;
 	let x = xy.split(',')[0];
 	let y = xy.split(',')[1];
@@ -24,51 +62,51 @@ function marcar(){
 
 		//Cartesian's circles
 		ctx.beginPath();
-		ctx.arc((x * 50) + 250, -(y * 50) + 250, 2, 0, 2 * Math.PI);
+		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
 		ctx.fillStyle = 'black';
 		ctx.fill(); 
 		ctx.font = "12px Arial";
-		ctx.fillText(`${x}, ${y}`, (x * 50) + 230, -(y * 50) + 230);
+		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
 		//Cartesian's dashed lines	
 		ctx.setLineDash([5, 5]);
-		ctx.moveTo((x * 50) + 250, 250);
-		ctx.lineTo((x * 50) + 250, -(y * 50) + 250);
-		ctx.moveTo(250, -(y * 50) + 250);
-		ctx.lineTo((x * 50) + 250, -(y * 50) + 250);
+		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
+		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.moveTo(width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
 		ctx.stroke();		
 
 	}else if(x >= 0 && y >= 0){
 
 		//Cartesian's circles
 		ctx.beginPath();
-		ctx.arc((x * 50) + 250, -(y * 50) + 250, 2, 0, 2 * Math.PI);
+		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
 		ctx.fillStyle = 'black';
 		ctx.fill(); 
 		ctx.font = "12px Arial";
-		ctx.fillText(`${x}, ${y}`, (x * 50) + 230, -(y * 50) + 230);
+		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
 		//Cartesian's dashed lines	
 		ctx.setLineDash([5, 5]);
-		ctx.moveTo((x * 50) + 250, 250);
-		ctx.lineTo((x * 50) + 250, -(y * 50) + 250);
-		ctx.moveTo(250, -(y * 50) + 250);
-		ctx.lineTo((x * 50) + 250, -(y * 50) + 250);
+		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
+		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.moveTo(width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
 		ctx.stroke();
 
 	}else if (x >= 0 && y <= 0){
 
 		//Cartesian's circles
 		ctx.beginPath();
-		ctx.arc((x * 50) + 250, -(y * 50) + 250, 2, 0, 2 * Math.PI);
+		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
 		ctx.fillStyle = 'black';
 		ctx.fill(); 
 		ctx.font = "12px Arial";
-		ctx.fillText(`${x}, ${y}`, (x * 50) + 230, -(y * 50) + 230);
+		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
 		//Cartesian's dashed lines	
 		ctx.setLineDash([5, 5]);
-		ctx.moveTo((x * 50) + 250, 250);
-		ctx.lineTo((x * 50) + 250, -(y * 50) + 250);
-		ctx.moveTo(250, -(y * 50) + 250);
-		ctx.lineTo((x * 50) + 250, -(y * 50) + 250);
+		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
+		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.moveTo(width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
 		ctx.stroke();		
 
 
@@ -76,16 +114,17 @@ function marcar(){
 
 		//Cartesian's circles		
 		ctx.beginPath();
-		ctx.arc((x * 50) + 250, -(y * 50) + 250, 2, 0, 2 * Math.PI);
+		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
 		ctx.fillStyle = 'black';
 		ctx.fill(); 
 		ctx.font = "12px Arial";
-		ctx.fillText(`${x}, ${y}`, (x * 50) + 230, -(y * 50) + 230);
+		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
 		//Cartesian's dashed lines	
-		ctx.moveTo((x * 50) + 250, 250);
-		ctx.lineTo((x * 50) + 250, -(y * 50) + 250);
-		ctx.moveTo(250, -(y * 50) + 250);
-		ctx.lineTo((x * 50) + 250, -(y * 50) + 250);
+		ctx.setLineDash([5, 5]);
+		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
+		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.moveTo(width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
 		ctx.stroke();	
 
 	};

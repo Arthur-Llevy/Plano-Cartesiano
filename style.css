@@ -1,9 +1,14 @@
-body {
+#container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	gap: 30px;
+}
+
+#xy, #send {
+	visibility: hidden;
+	position: absolute;
 }
 
 #canvas {

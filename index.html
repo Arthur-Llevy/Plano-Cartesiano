@@ -8,14 +8,20 @@
 
 </head>
 <body>
-	
-	<input id="xy" >
-	<button onclick='marcar()' id="send">Enviar</button>
 
-	<canvas width="500" height="500" id="canvas"></canvas>
+	<div id="container">
+
+		<label id="sizeLabel" for="size">Dimensões do plano</label>
+		<input type="text" id="size">
+		<button onclick="create()" id="createCP">Criar</button>
+
+		<input id="xy" >
+		<button onclick='marcar()' id="send">Enviar</button>
+
+	</div>
 
 	<footer>
-		<p>Version - 1.0.3</p>
+		<p>Version - 1.0.4</p>
 	</footer>
 
 	<script src="main.js"></script>
