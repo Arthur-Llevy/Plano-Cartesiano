@@ -89,6 +89,16 @@ footer {
   text-align: center;
 }
 
+#points {
+  visibility: hidden;  
+}
+
+#points, th, tr, td {
+  border: 1px solid #eee;
+  padding: 10px;
+  text-align: center;
+}
+
 @media screen and (max-width: 685px) {
 
 	#canvas {

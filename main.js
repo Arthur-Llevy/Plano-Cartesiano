@@ -47,13 +47,20 @@ function create(){
 	ctx.font = "10px Arial";
 	ctx.fillText(-width, 0,  (height * 100) / 2 + 10);
 	ctx.fillText(width, width * 100 + 10,  height * 100 / 2 + 10);
-	ctx.fillText(height, width * 100 / 2,  10);
-	ctx.fillText(height, width * 100 / 2 + 5,  height * 100 + 20);
+	ctx.fillText(height, width * 100 / 2 + 5,  10);
+	ctx.fillText(-height, width * 100 / 2 + 5,  height * 100 + 20);
 
 };
 
+//Alphabet's indice
+let counter = -1;	
+
 function marcar(){
 
+	let alphabet = "abcdefghijklmnopqrstuvwxyz".split('');	
+	counter >= 26 ? counter = -1 : counter += 1;	
+
+	//C = canvas variable
 	let c = document.getElementById('canvas');
 	let ctx = c.getContext('2d');
 	let width = canvas.getAttribute('width') - 20;
@@ -64,14 +71,20 @@ function marcar(){
 
 	if (x <= 0 && y <= 0){
 
-		//Cartesian's circles		
+		//Cartesian's circles	
+		let arcMarginLeft = (x * 50) + (width / 2) + 10;
+		let arcMarginTop = -(y * 50) + 10 + (height / 2);
+
 		ctx.beginPath();
-		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
+		ctx.arc(arcMarginLeft, arcMarginTop, 2, 0, 2 * Math.PI);
 		ctx.fillStyle = '#eee';
 		ctx.fill(); 
+
+		//Cartesian's points text
 		ctx.font = "12px Arial";
-		ctx.fillStyle = '#eee'
-		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 20, -(y * 50) + height / 2 + 30);
+		ctx.fillStyle = '#eee';
+		ctx.fillText(`${alphabet[counter]}`, arcMarginLeft + 10, arcMarginTop - 10);
+
 		//Cartesian's dashed lines	
 		ctx.setLineDash([5, 5]);
 		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
@@ -80,24 +93,64 @@ function marcar(){
 		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
 		ctx.stroke();	
 
+		//Insert points to table
+		let pointsTable = document.getElementById('points');
+		let tr = document.createElement('tr');
+		let td1 = document.createElement('td');
+		let td2 = document.createElement('td');
+
+		pointsTable.style.visibility = 'initial';
+		td1.innerHTML = alphabet[counter];
+		td2.innerHTML = `(${x},${y})`;
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+
+		pointsTable.appendChild(tr);
+
 	}else{
 
 		//Cartesian's circles
+		let arcMarginLeft = (x * 50) + (width / 2) + 10;
+		let arcMarginTop = -(y * 50) + 10 + (height / 2);
+
 		ctx.beginPath();
-		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
+		ctx.arc(arcMarginLeft, arcMarginTop, 2, 0, 2 * Math.PI);
 		ctx.fillStyle = '#eee';
 		ctx.fill(); 
+
+		//Cartesian's points text
 		ctx.font = "12px Arial";
-		ctx.fillStyle = '#eee'
-		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 20, -(y * 50) + height / 2 + 30);
+		ctx.fillStyle = '#eee';
+
+		y > 0 ? ctx.fillText(`${alphabet[counter]}`, arcMarginLeft - 20, arcMarginTop + 20) :
+			ctx.fillText(`${alphabet[counter]}`, arcMarginLeft - 20, arcMarginTop - 20);
+
+
+		x < 0 ? ctx.fillText(`${alphabet[counter]}`, arcMarginLeft + 20, arcMarginTop + 20) :
+			ctx.fillText(`${alphabet[counter]}`, arcMarginLeft - 20, arcMarginTop + 20)
+
 		//Cartesian's dashed lines	
 		ctx.setLineDash([5, 5]);
 		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
 		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
 		ctx.moveTo(width / 2 + 10, -(y * 50) + height / 2 + 10);
 		ctx.lineTo((x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
-		ctx.stroke();		
+		ctx.stroke();	
 
-	};
+		//Insert points to table
+		let pointsTable = document.getElementById('points');
+		let tr = document.createElement('tr');
+		let td1 = document.createElement('td');
+		let td2 = document.createElement('td');
+
+		pointsTable.style.visibility = 'initial';
+		td1.innerHTML = alphabet[counter];
+		td2.innerHTML = `(${x},${y})`;
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+
+		pointsTable.appendChild(tr);	
+
+	};	
 
 };
