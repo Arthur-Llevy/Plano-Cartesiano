@@ -1,14 +1,82 @@
-#container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 30px;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;400;600&display=swap');
+
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Kanit', sans-serif
 }
 
-#xy, #send {
+html {
+  background-color: #171717;
+  color: #eee;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 90%;
+  margin: 5% auto;
+}
+
+#xy, #send, #xyLabel {
 	visibility: hidden;
 	position: absolute;
+}
+
+#xyLabel, #sizeLabel {
+  display: block;
+  margin: 10px 0;
+}
+
+#xy, #size {
+  display: block;
+  text-align: center;
+  width: 130px;
+  height: 50px;
+  font-size: 16px;
+  margin: 20px auto;
+  outline: none;
+  border-radius: 8px;
+  border: none;
+}
+
+#send{
+  margin: 20px auto;
+  display: block;
+  width: 80px;
+  height: 35px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #00b500;
+  color: #eee;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+#createCP {
+  margin: 20px auto;
+  display: block;
+  width: 80px;
+  height: 35px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #00b500;
+  color: #eee;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+}
+
+#send:hover {
+	background-color: #018401;
+	transition: 0.2s;
 }
 
 #canvas {
@@ -16,9 +84,24 @@
 	display: block;
 }
 
-@media screen and (max-width: 512px) {
+footer {
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width: 685px) {
 
 	#canvas {
 		width: 90%;
+	}
+
+	#container {
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  gap: 30px;
+	  width: 90%;
+	  margin: 5% auto;
 	}
 }

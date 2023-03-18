@@ -5,6 +5,7 @@ function create(){
 	let sizeLabel = document.getElementById('sizeLabel');
 	let size = document.getElementById('size');
 	let createCPButton = document.getElementById('createCP');
+	let xyLabel = document.getElementById('xyLabel');
 
 	sizeLabel.style.position = 'absolute';
 	sizeLabel.style.visibility = 'hidden';
@@ -17,6 +18,8 @@ function create(){
 	xy.style.visibility = 'initial';
 	markButton.style.position = 'relative';
 	markButton.style.visibility = 'initial';
+	xyLabel.style.position = 'relative';
+	xyLabel.style.visibility = 'initial';
 
 	let width = document.getElementById('size').value.split(',')[0];
 	let height = document.getElementById('size').value.split(',')[1];
@@ -33,7 +36,8 @@ function create(){
 	let c = document.getElementById('canvas');
 	let ctx = c.getContext('2d');
 
-	ctx.strokeStyle = 'red';
+	ctx.fillStyle = '#eee'
+	ctx.strokeStyle = 'lime';
 	//Cartesian's lines
 	ctx.moveTo((width * 100) / 2 + 10, 0 + 10);
 	ctx.lineTo((width * 100) / 2 + 10, height * 100 + 10);
@@ -63,10 +67,11 @@ function marcar(){
 		//Cartesian's circles
 		ctx.beginPath();
 		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
-		ctx.fillStyle = 'black';
+		ctx.fillStyle = '#eee';
 		ctx.fill(); 
 		ctx.font = "12px Arial";
-		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.fillStyle = '#eee'
+		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 20, -(y * 50) + height / 2 + 30);
 		//Cartesian's dashed lines	
 		ctx.setLineDash([5, 5]);
 		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
@@ -80,10 +85,11 @@ function marcar(){
 		//Cartesian's circles
 		ctx.beginPath();
 		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
-		ctx.fillStyle = 'black';
+		ctx.fillStyle = '#eee';
 		ctx.fill(); 
 		ctx.font = "12px Arial";
-		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.fillStyle = '#eee'
+		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 20, -(y * 50) + height / 2 + 30);
 		//Cartesian's dashed lines	
 		ctx.setLineDash([5, 5]);
 		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
@@ -97,10 +103,11 @@ function marcar(){
 		//Cartesian's circles
 		ctx.beginPath();
 		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
-		ctx.fillStyle = 'black';
+		ctx.fillStyle = '#eee';
 		ctx.fill(); 
 		ctx.font = "12px Arial";
-		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.fillStyle = '#eee'
+		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 20, -(y * 50) + height / 2 + 30);
 		//Cartesian's dashed lines	
 		ctx.setLineDash([5, 5]);
 		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);
@@ -115,10 +122,11 @@ function marcar(){
 		//Cartesian's circles		
 		ctx.beginPath();
 		ctx.arc((x * 50) + width / 2 + 10, (-(y * 50) + 10) + height / 2, 2, 0, 2 * Math.PI);
-		ctx.fillStyle = 'black';
+		ctx.fillStyle = '#eee';
 		ctx.fill(); 
 		ctx.font = "12px Arial";
-		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 10, -(y * 50) + height / 2 + 10);
+		ctx.fillStyle = '#eee'
+		ctx.fillText(`${x}, ${y}`, (x * 50) + width / 2 + 20, -(y * 50) + height / 2 + 30);
 		//Cartesian's dashed lines	
 		ctx.setLineDash([5, 5]);
 		ctx.moveTo((x * 50) + width / 2 + 10, height / 2 + 10);

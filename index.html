@@ -11,17 +11,22 @@
 
 	<div id="container">
 
-		<label id="sizeLabel" for="size">Dimensões do plano</label>
-		<input type="text" id="size">
-		<button onclick="create()" id="createCP">Criar</button>
+		<div class="dimensions">
 
-		<input id="xy" >
-		<button onclick='marcar()' id="send">Enviar</button>
+				<label id="sizeLabel" for="size">Dimensões do plano</label>
+				<input placeholder="Ex.: 10, 13" type="text" id="size">
+				<button onclick="create()" id="createCP">Criar</button>
+
+				<label id="xyLabel" for="xy">Coordenada cartesiana</label>
+				<input id="xy"  placeholder="Ex.: 4, 5">
+				<button onclick='marcar()' id="send">Enviar</button>
+
+		</div>
 
 	</div>
 
 	<footer>
-		<p>Version - 1.0.4</p>
+		<p>Version - 1.0.5</p>
 	</footer>
 
 	<script src="main.js"></script>
