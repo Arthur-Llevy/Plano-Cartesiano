@@ -56,11 +56,11 @@ html {
   border: none;
 }
 
-#send, #calcularButton{
-  margin: 20px auto;
+#send, #calcularButton {
+  margin: 5px auto;
   display: block;
-  width: 80px;
-  height: 35px;
+  width: 130px;
+  height: 50px;
   font-size: 16px;
   font-weight: bold;
   background-color: #00b500;
@@ -74,8 +74,8 @@ html {
 #createCP {
   margin: 20px auto;
   display: block;
-  width: 80px;
-  height: 35px;
+  width: 130px;
+  height: 50px;
   font-size: 16px;
   font-weight: bold;
   background-color: #00b500;
@@ -85,7 +85,7 @@ html {
   border-radius: 8px;
 }
 
-#send:hover {
+#send:hover, #calcularButton:hover {
 	background-color: #018401;
 	transition: 0.2s;
 }
@@ -96,8 +96,14 @@ html {
 }
 
 footer {
+  height: 50px;
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  text-align: center;
 }
 
 #points {
@@ -119,10 +125,10 @@ footer {
 
  #dxyA, #dxyB {
   text-align: center;
-  width: 50px;
+  width: 65px;
   height: 50px;
   font-size: 16px;
-  margin: 5px auto;
+  margin: 0 auto;
   outline: none;
   border-radius: 8px;
   border: none;
