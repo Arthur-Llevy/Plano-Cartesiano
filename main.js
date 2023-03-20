@@ -56,8 +56,7 @@ function create(){
 			ctx.fillText(height, width * 100 / 2 + 5,  10);
 			ctx.fillText(-height, width * 100 / 2 + 5,  height * 100 + 20);
 
-			xy.innerHTML = ''; 
-
+		
 		}else {
 
 			alert('Para prosseguir, é necessário preencher todos os campos.')
@@ -72,20 +71,20 @@ let counter = -1;
 function marcar(){
 
 	let alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase().split('') 
-	counter >= 26 ? counter = -1 : counter += 1;
 
-	let xy = document.getElementById('xy').value;
+	let xy = document.getElementById('xy');
 
 	if (xy !== ''){
 
+		counter >= 26 ? counter = -1 : counter += 1;
 
 		//C = canvas variable
 		let c = document.getElementById('canvas');
 		let ctx = c.getContext('2d');
 		let width = canvas.getAttribute('width') - 20;
 		let height = canvas.getAttribute('height') - 20;
-		let x = xy.split(',')[0];
-		let y = xy.split(',')[1];
+		let y = xy.value.split(',')[1];
+		let x = xy.value.split(',')[0];
 
 		ctx.fillStyle = '#eee'
 		ctx.strokeStyle = 'lime';
@@ -222,6 +221,9 @@ function marcar(){
 
 			};
 
+			
+			ponto1.value = '';
+
 
 		});
 
@@ -230,5 +232,7 @@ function marcar(){
 		alert('Para prosseguir é necessário preencher todos os campos.');
 
 	};
+
+	xy.value = ''; 
 
 };
